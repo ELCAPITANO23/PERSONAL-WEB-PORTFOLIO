@@ -14,12 +14,17 @@
 <!-- ═══════════════ HEADER ═══════════════ -->
 <header>
   <div class="logo">ELCAPITANO</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+  <nav id="main-nav">
+    <a href="#about"    onclick="closeNav()">About</a>
+    <a href="#skills"   onclick="closeNav()">Skills</a>
+    <a href="#projects" onclick="closeNav()">Projects</a>
+    <a href="#contact"  onclick="closeNav()">Contact</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
 
 <!-- ═══════════════ HERO ═══════════════ -->
@@ -261,6 +266,22 @@
 </footer>
 
 <script>
+  /* ── Hamburger menu ── */
+  const hamburger = document.getElementById("hamburger");
+  const mainNav   = document.getElementById("main-nav");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    mainNav.classList.toggle("mobile-open");
+    document.body.style.overflow = mainNav.classList.contains("mobile-open") ? "hidden" : "";
+  });
+
+  function closeNav() {
+    hamburger.classList.remove("open");
+    mainNav.classList.remove("mobile-open");
+    document.body.style.overflow = "";
+  }
+
   /* ── Word drop animation (hero roles) ── */
   const words = ["SOFTWARE DEVELOPER", "TECH ENTHUSIAST", "YOUTH ADVOCATE"];
   let idx = 0;
@@ -298,8 +319,7 @@
     observer.observe(el);
   });
 
-  /* BIBLE VERSE ANIMATION */
-
+  /* ── Bible Verse Animation ── */
   const verses = [
     {
       words: ["I", "can", "do", "all", "things", "through", "Christ", "who", "strengthens", "me."],
@@ -315,10 +335,9 @@
 
   let verseIdx = 0;
   let wordIdx = 0;
-  let verseTimer = null;
 
   const verseWordsEl = document.getElementById("verse-words");
-  const verseRefEl = document.getElementById("verse-ref");
+  const verseRefEl   = document.getElementById("verse-ref");
 
   function buildVerse(v) {
     verseWordsEl.innerHTML = "";
@@ -348,13 +367,10 @@
     const v = verses[verseIdx];
     if (wordIdx < v.words.length) {
       const el = document.getElementById("vw" + wordIdx);
-      if (el) {
-        el.classList.add("vw-visible");
-      }
+      if (el) el.classList.add("vw-visible");
       wordIdx++;
-      verseTimer = setTimeout(showNextWord, 380);
+      setTimeout(showNextWord, 380);
     } else {
-      /* show reference, then pause, then switch verse */
       setTimeout(() => {
         verseRefEl.textContent = v.ref;
         verseRefEl.style.opacity = "1";
@@ -375,7 +391,6 @@
     setTimeout(showNextWord, 600);
   }
 
-  /* Start when the verse section enters viewport */
   const verseSection = document.querySelector(".verse-section");
   const verseObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
