@@ -17,13 +17,7 @@ This is my personal portfolio website showcasing my skills, projects, and backgr
 - Contact information  
 
 ## 🛠️ Technologies Used
-- HTML5  
-- CSS3  
-- JavaScript  
+- React 
+-  Vite js 
+- CSS3
 
-## 📂 Project Structure
-portfolio/
-│── index.html
-│── style.css
-│── images/
-│     └── (all images used in the website)

@@ -128,8 +128,8 @@ nav.mobile-open {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(rgba(2,6,23,0.45), rgba(2,6,23,0.7)),
-    url('images/background.jpg') center/cover no-repeat;
+  linear-gradient(rgba(2,6,23,0.45), rgba(2,6,23,0.7)),
+  url('public/images/background.jpg') center/cover no-repeat;
 }
 
 .hero-overlay {
