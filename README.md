@@ -17,7 +17,7 @@ This is my personal portfolio website showcasing my skills, projects, and backgr
 - Contact information  
 
 ## 🛠️ Technologies Used
-- React 
--  Vite js 
+- HTML5
 - CSS3
+- Javascript.
 
